@@ -1,0 +1,58 @@
+#include <iostream>
+#include <cstring>
+#include <cctype>
+#include "valid.h"
+using namespace std;
+
+
+// constant integers
+const int PARAGRAPH = 250;
+
+
+
+int words(char paragraph[]) {
+  int len = 0;
+  int i = 0;
+  int space = 0;
+  len = strlen(paragraph);
+  
+  for (i = 0; i < len; ++i) {
+    cout << paragraph[i] << endl;
+
+    if (paragraph[i] == ' ') {
+      space++;
+    }
+  }
+  return space+1;
+}
+
+int main() {
+
+  char paragraph[PARAGRAPH]; // array for the paragraph
+  char decision = '\0';
+  int wordCount = 0;
+  int space = 0;
+  
+
+  cout << "Welcome to the Submission Shortener. " << endl; // welcomes user
+  cout << "You will enter in the max word count and the paragraph" << 
+          " you would like to be shortened. " << endl; // introduces program to user
+
+  // prompts user for max word count
+  cout << "\nPlease enter in the max word count: ";
+  cin >> wordCount;
+  cin.ignore(100, '\n');
+
+  // prompts user for paragraph
+  cout << "\nPlease enter in your paragraph: ";
+  cin.get(paragraph, PARAGRAPH, '\n');
+  cin.ignore(100, '\n');
+
+  // echoes paragraph back to user
+  cout << "\nYou entered " << paragraph << ". Is this correct?" << endl;
+  decision = getChar("Enter in Y or N: ");
+ 
+  space = words(paragraph);
+
+  cout << "You entered " << space << " words." << endl;
+}
